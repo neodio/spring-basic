@@ -2,12 +2,11 @@ package com.spring.basic;
 
 import com.spring.basic.discount.DiscountPolicy;
 import com.spring.basic.discount.RateDiscountPolicy;
-import com.spring.basic.order.OrderService;
-import com.spring.basic.order.OrderServiceImpl;
 import com.spring.basic.member.MemberRepository;
 import com.spring.basic.member.MemberService;
 import com.spring.basic.member.MemberServiceImpl;
 import com.spring.basic.member.MemoryMemberRepository;
+import com.spring.basic.order.OrderService;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 
@@ -29,7 +28,8 @@ public class AppConfig {
     @Bean
     public OrderService orderService() {
         System.out.println("call AppConfig.orderService");
-        return new OrderServiceImpl(memberRepository(), discountPolicy());
+//        return new OrderServiceImpl(memberRepository(), discountPolicy());
+        return null;
     }
 
     @Bean
