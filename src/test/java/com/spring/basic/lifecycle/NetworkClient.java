@@ -1,6 +1,9 @@
 package com.spring.basic.lifecycle;
 
-public class NetworkClient {
+import jakarta.annotation.PostConstruct;
+import jakarta.annotation.PreDestroy;
+
+public class NetworkClient /*implements InitializingBean, DisposableBean*/ {
 
     private String url;
 
@@ -27,4 +30,30 @@ public class NetworkClient {
     public void disconnect() {
         System.out.println("close = " + url);
     }
+
+    @PostConstruct
+    public void init() {
+        System.out.println("NetworkClient.init");
+        connect();
+        call("초기화 연결 메시지");
+    }
+
+    @PreDestroy
+    public void close() {
+        System.out.println("NetworkClient.close");
+        disconnect();
+    }
+
+//    @Override
+//    public void afterPropertiesSet() throws Exception {
+//        System.out.println("NetworkClient.afterPropertiesSet");
+//        connect();
+//        call("초기화 연결 메시지");
+//    }
+//
+//    @Override
+//    public void destroy() throws Exception {
+//        System.out.println("NetworkClient.destroy");
+//        disconnect();
+//    }
 }
